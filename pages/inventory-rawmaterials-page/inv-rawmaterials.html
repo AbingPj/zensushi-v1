@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zen Sushi - Raw Materials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../img/zenicon.png">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/loading-btn.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css" />
+</head>
+
+<body>
+        <div class="panel" id="invrawpage" style="display: none;">
+    
+
+
+        <!-- header -->
+        <div class="jumbotron customjumbotron">
+        </div>
+
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            
+            <img src="../../img/zenicon3.png" class="rounded float-left" > 
+            <a class="navbar-brand active" href="../../pages/home-page/home.html">Zen Sushi</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item dropdown" id="Library_navItem">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Library
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="../../pages/create-category-page/create-category.html">Categories</a>
+                                    <a class="dropdown-item" href="../../pages/create-rawmaterial-page/create-rawmaterial.html">Raw</a>
+                                    <a class="dropdown-item" href="../../pages/create-products-page/create-product.html">Products</a>
+                                    <a class="dropdown-item" href="../../pages/accounts/accounts.php">Accounts</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown" id="Inventory_navItem">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                  Inventory
+                                </a>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="../../pages/inventory-rawmaterials-page/inv-rawmaterials.html">Raw Invetory</a>
+                                  <a class="dropdown-item" href="../../pages/inventory-products-page/inv-products.html">Production</a>
+                                </div>
+                              </li>
+                              <li class="nav-item dropdown" id="Records_navItem">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                  Records
+                                </a>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="../../pages/records-rawmaterials-page/rec-rawmaterials.php">Raw records</a>
+                                  <a class="dropdown-item" href="../../pages/records-products-page/rec-products.php">Product records</a>
+                                </div>
+                              </li>
+
+                              
+                            <li class="nav-item dropdown" id="Reports_navItem">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    Reports
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="../../pages/reports-rawmaterials-page/rp-rawmaterials.html">Raw</a>
+                                    <a class="dropdown-item" href="../../pages/reports-products-page/rp-products.html">Products</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" id="Request_navItem">
+                                <a class="nav-link" href="../../pages/order-products-page/order-products.html" id="navbardrop">
+                                    Request/Order
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item dropdown" id="Deliver_navItem">
+                                    <a class="nav-link" href="../../pages/deliver-page/deliver-products.html" id="navbardrop">
+                                        Deliver
+                                </a>
+                            </li>
+                </ul>
+
+
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" id="Notification_navItem">
+                            <a class="nav-link" href="../../pages/notification-page/notification.html">Notifications <span class="oi oi-bell">
+                                <big><span class="badge badge-danger" id="notification_badge"></span></big>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <b id="usernameAtNavabar"> .</b>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item"  id="LogOut">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+        <!--body-->
+        <div class="container myMinimumContent myOpacity4">
+
+
+            <h2>RAW MATERIALS </h2>
+            <h3>Inventory</h3>
+            <br>
+            <br>
+            <h6>(Click the entire row for stock options)</h6>
+
+            <div class="panel-body ld-over running" id="myloader">
+                <div class="ld ld-ball ld-broadcast"></div>
+                <div class="myMinimumContent2">
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="example" class="table table-hover display nowrap" style="background-color: cornsilk;width:100%; ">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Raw Material</th>
+                                        <th>Balance</th>
+                                        <th>Unit</th>
+                                        <th>Category</th>
+                                        <!--<th>Critical.lvl</th> -->
+                                        <th>Select</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_rm">
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>RawMaterial</th>
+                                        <th>Balance</th>
+                                        <th>Unit</th>
+                                        <th>Category</th>
+                                     
+                                    </tr>
+                                </tfoot> -->
+
+                            </table>
+                            <a class="btn btn-primary" id="btnToRMRecords" href="../../pages/records-rawmaterials-page/rec-rawmaterials.php">Raw Matrials Inventory Records</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- footer -->
+        <div class="jumbotron text-center" style="margin-bottom:0">
+            <p>Copyright. All Rights Reserved</p>
+        </div>
+
+        <div class="modal fade" id="RawModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Stock In and Out</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h5>Raw Material:&nbsp;
+                            <b id="RmNameLabel"></b>
+                        </h5>
+                        <h5>Balance: &nbsp; &nbsp;&nbsp;&nbsp;
+                            <b id="balanceLabel"></b>
+                            <span id="unitLabel"></span>
+                        </h5>
+                        <br>
+
+
+                        <div id="stockInform" class="collapse">
+                            <div class="container" style=" margin-top:5px; ">
+                                <label id="unitLabel2"></label>
+
+                                <div id="btnStockInLoad" class="input-group mb-3 ld-over">
+                                    <div class="ld ld-ball ld-broadcast"></div>
+                                    <input type="number" id="txtIN" class="form-control" placeholder="Stock In Value">
+                                    <div class="input-group-append">
+                                        <button id="btnStockIN" class="btn btn-success btn-block">
+                                            <span class="oi oi-expand-down"></span>
+                                            &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;IN
+                                        </button>
+                                    </div>
+                                </div>
+
+                               
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="incheck">
+                                    <label class="form-check-label" for="incheck">Date</label>
+                                  </div>
+                                <input type="date" id="indate" class="form-control" min="2015-01-01" max="2035-12-31"  disabled >
+
+                            </div>
+                        </div>
+                        <br>
+
+
+                        <div class="container" style=" margin-top:5px; ">
+                            <div class="row">
+                                
+                                
+                                
+                                <div class="col">
+                                    <button id="btnStockIn1" type="button" class="btn btn-success btn-block" data-toggle="collapse"
+                                        data-target="#stockInform">
+                                        <span class="oi oi-expand-down"></span> &nbsp; &nbsp; &nbsp; STOCK IN</button>
+                                </div>
+                                
+                                
+                                
+                                <div class="col">
+                                    <button id="btnStockOut1" type="button" class="btn btn-danger btn-block" data-toggle="collapse"
+                                        data-target="#stockOutform">
+                                        <!-- <button type="button" class="btn btn-danger btn-block" id="stackouttoggle"> -->
+                                        <span class="oi oi-collapse-up"></span> &nbsp; &nbsp; &nbsp; STOCK OUT</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+
+                        <br>
+                        <div id="stockOutform" class="collapse">
+                            <div class="container" style=" margin-top:5px; ">
+                                <label id="unitLabel3"></label>
+                                <div id="btnStockOutLoad" class="input-group mb-3 ld-over">
+                                    <div class="ld ld-ball ld-broadcast"></div>
+                                    <input type="number" id="txtOut" class="form-control" placeholder="Stock Out Value">
+                                    <div class="input-group-append">
+                                        <button id="btnStockOut" class="btn btn-danger btn-block">
+                                            <!-- data-dismiss="modal" data-toggle="collapse" data-target=".multi-collapse"
+                                            aria-expanded="false" aria-controls="stockInform stockOutform"> -->
+                                            <span class="oi oi-collapse-up"></span>
+                                            &nbsp; &nbsp; &nbsp; OUT
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="outcheck">
+                                    <label class="form-check-label" for="outcheck">Date</label>
+                                  </div>
+                                <input type="date" id="outdate" class="form-control" placeholder="From Date" disabled >
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Remove RAWMATERIAL Modal -->
+        <div class="modal fade" id="RemoveRawModal_atInventory">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Reset Rawmaterial Quantity</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h5>Are you sure you want to reset the quantity of
+                            <br>RawMaterial:
+                            <b id="RemoveNameLabel"></b>
+                            <br>in this iventory?
+                        </h5>
+                        <button type="button" class="btn btn-danger" id="btnResetRm" data-dismiss="modal">YES</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <script src="../../js/zen.js"></script>
+    <!-- <script src="../../js/myjs.js"></script> -->
+    <script src="../../js/zenUpdate.js"></script>
+
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap_notify_3/dist/bootstrap-notify.min.js"></script>
+    <!-- <script type="text/javascript" src="../../DataTables/datatables.min.js"></script> -->
+
+    <script type="text/javascript" src="../../DataTables/datatables.min.js"></script>
+
+
+
+    <script src="inv-rawmaterials-object.js"></script>
+    <script src="inv-rawmaterials-request.js"></script>
+    <script src="inv-rawmaterials-notify.js"></script>
+    <script src="inv-rawmaterials-pusher.js"></script>
+    <script src="inv-rawmaterials-datatable.js"></script>
+    <script src="inv-rawmaterials.js"></script>
+    <script src="inv-rawmaterials-doc_ready.js"></script>
+</body>
+
+
+</html>

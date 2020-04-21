@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <input type="text" id="txtmsg">
+    <button type='submit' onclick="btnSubmit()">Submit</button>
+
+    <div class="list-group">
+
+    </div>
+
+    <div class="container">
+        <ul id="body123" class="list-group">
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('da7a7c063cc49b6f74d2', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+
+    var gc_channel = pusher.subscribe('groupchat-channel');
+    gc_channel.bind('sent', function (data) {
+        var body = document.getElementById("body123");
+        var string = '<div class="cities"><p>'
+        var string2 = '</p></div>'
+        var allstring = string + data + string2;
+        $("#body123").append('<li class="list-group-item">' + allstring + '</li>');
+    });
+
+    function btnSubmit() {
+        var msg = document.getElementById('txtmsg').value;
+
+        $.ajax({
+            url: "groupchat_server.php",
+            data: { msg: msg },
+            type: 'POST',
+            success: function (result) {
+
+            }
+        });
+
+
+    }
+
+
+</script>
+
+<style>
+    .cities {
+        background-color: rgb(103, 192, 243);
+        color: white;
+        margin: 5px;
+        padding: 5px;
+    }
+</style>

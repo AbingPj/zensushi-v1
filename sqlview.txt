@@ -1,0 +1,71 @@
+
+CREATE VIEW RM_IN_view AS 
+SELECT rawmaterial_id, SUM(quantity) as 'IN' 
+ FROM `rawmaterialin` 
+ GROUP BY rawmaterial_id
+
+
+CREATE VIEW RM_OUT_view AS 
+SELECT rawmaterial_id, SUM(quantity) as 'OUT'
+ FROM `rawmaterialout`
+ GROUP BY rawmaterial_id
+
+
+CREATE VIEW RM_BALANCE_view AS
+SELECT rawmaterial.id as 'id', rawmaterial.rawcategory_id as 
+'cat_id', 
+rawmaterial.name as 'name', units_sub.name as 'unit', 
+rawcategory.name as 'cat_name', 
+rawmaterial.units_id as 'units_id', 
+rawmaterial.units_sub_id as 'units_sub_id', 
+RM_IN_view.IN,
+RM_OUT_view.OUT,
+IFNULL((RM_IN_view.IN - IFNULL(RM_OUT_view.OUT,0) ),'NULL') as 'balance',
+rawmaterial.critical_level
+FROM `rawmaterial`
+INNER JOIN rawcategory ON rawmaterial.rawcategory_id = 
+rawcategory.id
+INNER JOIN units ON rawmaterial.units_id = units.id
+INNER JOIN units_sub ON rawmaterial.units_sub_id = units_sub.id
+LEFT JOIN RM_IN_view ON RM_IN_view.rawmaterial_id = rawmaterial.id
+LEFT JOIN RM_OUT_view ON RM_OUT_view.rawmaterial_id = rawmaterial.id
+
+SELECT id, name, balance, critical_level FROM rm_balance_view 
+WHERE balance <= critical_level
+
+CREATE VIEW PROD_IN_view AS
+SELECT products_id,SUM(quantity) as `IN`
+FROM `products_in_list`  GROUP BY products_id
+
+CREATE VIEW PROD_OUT_view AS
+SELECT products_id,SUM(quantity) as `OUT`
+FROM `deliverylist`  GROUP BY products_id 
+
+
+CREATE VIEW PROD_BALANCE_view AS
+SELECT 
+products.id as 'id', 
+products.name as 'name', 
+IFNULL(CONCAT(products.name,' (',IF( products.value < 1, products.value * units.value, products.value * 1 ),' ',units_sub.name ,')'), products.name)  as 'display_name',
+products.value as 'value', 
+IF( products.value < 1, products.value * units.value, products.value * 1 ) as 'unit_value', 
+units_sub.name as 'unit', 
+rawmaterial.name as 'rawmaterial', 
+units_sub.id as 'units_sub_id', 
+rawmaterial.id as 'rawmaterial_id', 
+units.id as 'units_id', 
+units.name as 'units_name',
+products_packaging.name as 'packaging',
+products_packaging.id as 'packaging_id',
+PROD_IN_view.IN as 'IN',
+PROD_OUT_view.OUT as 'OUT',
+(IFNULL((IFNULL(PROD_IN_view.IN,0) - IFNULL(PROD_OUT_view.OUT,0)),0))
+ as 'balance',
+products.critical_level
+FROM `products` 
+LEFT JOIN units_sub ON units_sub.id = products.units_sub_id 
+LEFT JOIN units ON units.id = units_sub.units_id 
+LEFT JOIN rawmaterial ON rawmaterial.id = products.rawmaterial_id
+LEFT JOIN products_packaging ON products_packaging.id = products.packaging_id
+LEFT JOIN PROD_IN_view ON PROD_IN_view.products_id = products.id
+LEFT JOIN PROD_OUT_view ON PROD_OUT_view.products_id = products.id

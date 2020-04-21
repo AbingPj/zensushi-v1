@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zen Sushi - Create Rawmaterial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../img/zenicon.png">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/loading-btn.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css" />
+
+
+</head>
+
+<body>
+    <!-- header -->
+    <div class="jumbotron customjumbotron">
+    </div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <img src="../../img/zenicon3.png" class="rounded float-left" > 
+        <a class="navbar-brand" href="../../pages/home-page/home.html">Zen Sushi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown" id="Library_navItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Library
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../../pages/create-category-page/create-category.html">Categories</a>
+                                <a class="dropdown-item" href="../../pages/create-rawmaterial-page/create-rawmaterial.html">Raw</a>
+                                <a class="dropdown-item" href="../../pages/create-products-page/create-product.html">Products</a>
+                                <a class="dropdown-item" href="../../pages/accounts/accounts.php">Accounts</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" id="Inventory_navItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                              Inventory
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="../../pages/inventory-rawmaterials-page/inv-rawmaterials.html">Raw Invetory</a>
+                              <a class="dropdown-item" href="../../pages/inventory-products-page/inv-products.html">Production</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown" id="Records_navItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                              Records
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="../../pages/records-rawmaterials-page/rec-rawmaterials.php">Raw records</a>
+                              <a class="dropdown-item" href="../../pages/records-products-page/rec-products.php">Product records</a>
+                            </div>
+                          </li>
+                        <li class="nav-item dropdown" id="Reports_navItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../../pages/reports-rawmaterials-page/rp-rawmaterials.html">Raw</a>
+                                <a class="dropdown-item" href="../../pages/reports-products-page/rp-products.html">Products</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" id="Request_navItem">
+                            <a class="nav-link" href="../../pages/order-products-page/order-products.html" id="navbardrop">
+                                Request/Order
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown" id="Deliver_navItem">
+                                <a class="nav-link" href="../../pages/deliver-page/deliver-products.html" id="navbardrop">
+                                    Deliver
+                            </a>
+                        </li>
+
+            </ul>
+
+
+            <ul class="nav navbar-nav">
+                <li class="nav-item" id="Notification_navItem">
+                        <a class="nav-link" href="../../pages/notification-page/notification.html">Notifications <span class="oi oi-bell">
+                            <big><span class="badge badge-danger" id="notification_badge"></span></big>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <b id="usernameAtNavabar"> .</b>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item"  id="LogOut">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!--body-->
+    <div class="container myMinimumContent">
+        <div class="row">
+            <div class="col-sm-4 myOpacity6">
+                <h2>CREATE RAW MATERIAL</h2>
+                <br>
+                <h5>Raw Material Form:</h5>
+
+
+                <div class="form-group">
+
+                    <label>Category:</label>
+                    <select class="custom-select" id="CategorySelectionAtCreateRawmaterial">
+                    </select>
+                    <br>
+
+                    <label>Raw Material Name:</label>
+                    <input type="text" id="txtRawMaterial" class="form-control" placeholder="Enter the name of rawmaterials"
+                        required>
+                    <br>
+                    <!-- <div class="row">
+                        <div class="col-3">
+                            <label>Quantity:</label>
+                        </div>
+                        <div class="col-9">
+                            <select class="custom-select" id="QuantityUnitSelection">
+                                <option selected>Choose...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br> -->
+                    <label>Critical Level:</label>
+                    <input type="number" id="txtRawCrit" class="form-control" placeholder=""
+                    value = '5'    >
+                    <br>
+                    
+                    <!-- <div class="row">
+                        <div class="col-3">
+                            <label>Unit:</label>
+                        </div>
+                        <div class="col-9">
+                            <select class="custom-select" id="UnitSubSelection">
+                            </select>
+                        </div>
+                    </div> -->
+                    <br>
+                    <button id="btnSaveRm" class="btn btn-primary ld-ext-right ">
+                        <div class="ld ld-ball ld-broadcast"></div>
+                        SAVE
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-sm-8 myOpacity2">
+                <h2>&nbsp;</h2>
+                <br>
+                <h5>Raw Materials</h5>
+
+                <br>
+                <!-- <div class="panelscroll-500"> -->
+                <div class="panel-body ld-over running" id="myloader">
+                    <div class="ld ld-ball ld-broadcast"></div>
+                    <div class="myMinimumContent2">
+                        <table id="rawtable" class="table table-hover" style="background-color: cornsilk; width:100%;">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        <input type="checkbox" class="select-all checkbox" name="select-all" id="InputSelectAll">
+                                    </th>
+
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Unit</th>
+                                    <th>Category</th>
+                                    <th>Critical.lvl</th>
+                                    <th>Option</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_createRawmaterial">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+
+                <button id="select-all" class="btn btn-default">SelectAll/Cancel</button>
+                <button id="btnSelected" class="btn btn-danger">Delete
+                    Checked</button>
+
+
+            </div>
+            <!-- col-sm-8 close -->
+
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Copyright. All Rights Reserved</p>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="UpdateRawModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <label>Category:</label>
+                    <select class="custom-select" id="CategorySelectionAtCreateRawmaterial_AtUpdateModal">
+                    </select>
+                    <br>
+
+                    <label>Raw Material Name:</label>
+                    <input type="text" id="txtRawMaterialUpdateName" class="form-control">
+                    <!-- <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Quantity:</label>
+                        </div>
+                        <div class="col-9">
+                            <select class="custom-select" id="QuantityUnitSelection_AtUpdateModal">
+                                <option selected>Choose...</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <br>
+                    <label>Critical Level:</label>
+                    <input type="number" id="txtRawUpdateCrit" class="form-control">
+                    <br>
+                    <!-- <div class="row">
+                        <div class="col-3">
+                            <label>Unit:</label>
+                        </div>
+                        <div class="col-9">
+                            <select class="custom-select" id="UnitSubSelection_AtUpdateModal">
+                            </select>
+                        </div>
+                    </div> -->
+
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="updateRM()">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Delete RAWMATERIAL Modal -->
+    <div class="modal fade" id="DeleteRawMaterialModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>Are you sure you want to delete this Raw Material:
+                        <br>
+                        Raw Material: &nbsp; <b id="DeleteNameLabel"></b> ?</h5>
+                    <br>
+                    <button type="button" class="btn btn-danger" onclick="deleteRM()" id="btnUpdateCategory"
+                        data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete RAWMATERIAL Multiple Modal -->
+    <div class="modal fade" id="DeleteRawMaterialModal_Multiple">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <h5>Are you sure you want to delete this All Raw Material(s)?:
+                        <br>
+                        <ul id="DeleteNameLabel_Multiple">
+                        </ul>
+                    </h5>
+
+                    <button type="button" class="btn btn-danger" onclick="deleteMultipleRM()" id="btnUpdateCategory"
+                        data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <script src="../../js/zen.js"></script>
+    <!-- <script src="../../js/myjs.js"></script> -->
+    <script src="../../js/zenUpdate.js"></script>
+
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap_notify_3/dist/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="../../DataTables/datatables.min.js"></script>
+
+
+    <script src="create-rawmaterials-request.js"></script>
+    <script src="create-rawmaterials-datatables.js"></script>
+    <script src="create-rawmaterials-displays.js"></script>
+    <script src="create-rawmaterials-objects.js"></script>
+    <script src="create-rawmaterials-pusher.js"></script>
+    <script src="create-rawmaterial.js"></script>
+    <script src="create-rawmaterials-doc_ready.js"></script>
+
+</body>
+
+</html>
+<script>
+/////https://datatables.net/download/
+/////https://toni-heittola.github.io/js-datatable/
+/////https://www.youtube.com/watch?v=ktW5P2SigiM
+//////https://mdbootstrap.com/content/bootstrap-table-styles/
+////////https://www.webslesson.info/2017/01/php-pdo-ajax-crud-with-data-tables-and-bootstrap-modals.html
+///////https://www.youtube.com/watch?v=E26oj-XD6TU
+//////https://www.youtube.com/watch?v=F-0P12xOVGMmmmm
+</script>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zen Sushi - Create Product</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../img/zenicon.png">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/loading-btn.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css" />
+
+
+
+</head>
+
+<body>
+    <!-- header -->
+    <div class="jumbotron customjumbotron">
+    </div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <img src="../../img/zenicon3.png" class="rounded float-left">
+        <a class="navbar-brand" href="../../pages/home-page/home.html">Zen Sushi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown" id="Library_navItem">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Library
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../pages/create-category-page/create-category.html">Categories</a>
+                        <a class="dropdown-item" href="../../pages/create-rawmaterial-page/create-rawmaterial.html">Raw</a>
+                        <a class="dropdown-item" href="../../pages/create-products-page/create-product.html">Products</a>
+                        <a class="dropdown-item" href="../../pages/accounts/accounts.php">Accounts</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="Inventory_navItem">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Inventory
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../pages/inventory-rawmaterials-page/inv-rawmaterials.html">Raw
+                            Invetory</a>
+                        <a class="dropdown-item" href="../../pages/inventory-products-page/inv-products.html">Production</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="Records_navItem">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Records
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../pages/records-rawmaterials-page/rec-rawmaterials.php">Raw
+                            records</a>
+                        <a class="dropdown-item" href="../../pages/records-products-page/rec-products.php">Product
+                            records</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="Reports_navItem">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Reports
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../pages/reports-rawmaterials-page/rp-rawmaterials.html">Raw</a>
+                        <a class="dropdown-item" href="../../pages/reports-products-page/rp-products.html">Products</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="Request_navItem">
+                    <a class="nav-link" href="../../pages/order-products-page/order-products.html" id="navbardrop">
+                        Request/Order
+                    </a>
+                </li>
+                <li class="nav-item dropdown" id="Deliver_navItem">
+                    <a class="nav-link" href="../../pages/deliver-page/deliver-products.html" id="navbardrop">
+                        Deliver
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class="nav-item" id="Notification_navItem">
+                    <a class="nav-link" href="../../pages/notification-page/notification.html">Notifications
+                        <span class="oi oi-bell">
+                            <big>
+                                <span class="badge badge-danger" id="notification_badge"></span>
+                            </big>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <b id="usernameAtNavabar"> .</b>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item"  id="LogOut">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!--body-->
+    <div class="container myMinimumContent">
+        <div class="row">
+            <div class="col-sm-4 myOpacity6">
+                <h2>CREATE PRODUCT</h2>
+                <br>
+                <h5>Product Form:</h5>
+                <br>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">Raw</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                            aria-selected="false">Others</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="myOpacity8">
+                        <br>
+                        </div>
+                        <div class="form-group"> 
+                            <label>Category:</label>
+                            <select class="custom-select" id="CategorySelection">
+                            </select>
+                            <br>
+                            <label>Raw Material:</label>
+                            <select class="custom-select" id="RawmaterialsSelection">
+                            </select>
+                            <br>
+
+                            <label>Product Name:</label>
+                            <input type="text" id="txtProductName" class="form-control" placeholder="Enter the product name"
+                                required>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <label>Value:</label>
+                                    <input type="number" id="txtValueOfProduct" class="form-control" placeholder="Value"
+                                        required>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <label id="LabelUnitsAtCreateProducts">.</label>
+                                    <select class="custom-select" id="UnitSubSelection">
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <label>Product Packaging Unit:</label>
+                            <select class="custom-select" id="PackagingSelection">
+                            </select>
+                            <br>
+                            <label>Critical Level:</label>
+                            <input type="number" id="txtProdCrit" class="form-control" placeholder="" value="5">
+                            <br>
+                            <br>
+                            <button id="btnSaveProd" class="btn btn-primary ld-ext-right">
+                                <div class="ld ld-ball ld-broadcast"></div>
+                                SAVE
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="myOpacity8">
+                        <br>
+                        </div>
+                        <div class="form-group">
+
+                            <label>Product Name:</label>
+                            <input type="text" id="txtProductName2" class="form-control" placeholder="Enter the product name"
+                                required>
+                            <br>
+                            <label>Product Packaging Unit:</label>
+                            <select class="custom-select" id="PackagingSelection2">
+                            </select>
+                            <br>
+                            <label>Critical Level:</label>
+                            <input type="number" id="txtProdCrit2" class="form-control" placeholder="" value="5">
+                            <br>
+                            <br>
+                            <button id="btnSaveProd2" class="btn btn-primary ld-ext-right">
+                                <div class="ld ld-ball ld-broadcast"></div>
+                                SAVE
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-8 myOpacity2">
+                <h2>&nbsp;</h2>
+                <br>
+                <h5>Products</h5>
+
+
+                <br>
+                <div class="panel-body ld-over running" id="myloader">
+                    <div class="ld ld-ball ld-broadcast"></div>
+                    <div class="myMinimumContent2">
+                        <table id="tableCreateProducts" class="table table-hover" style="background-color: cornsilk; width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="width: 3%">
+                                        <input type="checkbox" class="select-all checkbox" name="select-all" />
+                                    </th>
+                                    <th style="width: 15%">Options</th>
+                                    <th style="width: 12%">ID</th>
+                                    <th style="width: 30%">Name</th>
+                                    <th style="width: 10%">Unit</th>
+                                    <th style="width: 10%">RM</th>
+                                    <th style="width: 5%">Critical.lvl</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_createProducts">
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <button id="select-all" class="btn btn-default">SelectAll/Cancel</button>
+                <button id='btnDeleteProd_Multiple_Selected' class="btn btn-danger">Delete Checked
+                </button>
+
+            </div>
+            <!-- col-sm-8 close -->
+
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Copyright. All Rights Reserved</p>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="UpdateProdModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label>Category:</label>
+                    <select class="custom-select" id="CategorySelectionAtUpdateProduct" onchange="displayCatSelectionChange_AtUpdateModal()">
+                    </select>
+                    <br>
+
+                    <label>Rawmaterial:</label>
+                    <select class="custom-select" id="RMSelectionAtUpdateProduct">
+                    </select>
+
+
+                    <br>
+                    <label>Product Name:</label>
+                    <input type="text" id="txtUpdateProductName" class="form-control" placeholder="Enter the product name"
+                        required>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <label>Value:</label>
+                            <input type="number" id="txtValueOfProduct_AtUpdateProduct" class="form-control"
+                                placeholder="Value" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <label id="labelUnits_AtAtProducts">.</label>
+                            <select class="custom-select" id="SubUnitSelection_AtUpdateProdutcs">
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <label>Product Packaging Unit:</label>
+                    <select class="custom-select" id="PackagingSelection_AtUpdateProducts">
+                    </select>
+                    <br>
+                    <br>
+                    <label>Critical Level:</label>
+                    <input type="number" id="txtProdUpdateCrit" class="form-control">
+                    <br>
+
+
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="btnUpdateProd" type="button" class="btn btn-warning" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Update Modal2 -->
+    <div class="modal fade" id="UpdateProdModal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <label>Product Name:</label>
+                    <input type="text" id="txtUpdateProductName2" class="form-control" placeholder="Enter the product name"
+                        required>
+                    <br>
+                    <label>Product Packaging Unit:</label>
+                    <select class="custom-select" id="PackagingSelection2_AtUpdateProducts">
+                    </select>
+                    <br>
+                    <br>
+                    <label>Critical Level:</label>
+                    <input type="number" id="txtProdUpdateCrit2" class="form-control">
+                    <br>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="btnUpdateProd2" type="button" class="btn btn-warning" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Delete product Modal -->
+    <div class="modal fade" id="DeleteProdModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product:</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>Are you sure you want to delete this Product: &nbsp;
+                        <b id="DeleteNameLabel"></b> ?</h5>
+                    <br>
+                    <button type="button" class="btn btn-danger" id="btndeleteProd" data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete RAWMATERIAL Multiple Modal -->
+    <div class="modal fade" id="DeleteProdModal_Multiple">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>Are you sure you want to delete this Products?:
+                        <br>
+                        <ul id="DeleteNameLabel_Multiple">
+                        </ul>
+                    </h5>
+                    <br>
+                    <button type="button" class="btn btn-danger" onclick="deleteMultipleProd();" id="" data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <script src="../../js/zen.js"></script>
+    <!-- <script src="../../js/myjs.js"></script> -->
+    <script src="../../js/zenUpdate.js"></script>
+
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap_notify_3/dist/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="../../DataTables/datatables.min.js"></script>
+    <script src="create-product.js"></script>
+    <script src="create-products-table-check-box.js"></script>
+    <script src="create-products-pusher.js"></script>
+    <script src="create-products-objects.js"></script>
+    <script src="create-products-datatable.js"></script>
+    <script src="create-products-selections.js"></script>
+    <script src="create-products-request.js"></script>
+    <script src="create-products-doc-ready.js"></script>
+
+
+
+
+    <!-- <script src="create-products-objects.js"></script>
+ 
+    <script src="create-products-table-check-box.js"></script>
+    <script src="create-products-update-displayAtModal.js"></script>
+    <script src="create-products.js"></script>
+    <script src="create-products-pusher.js"></script>
+    -->
+
+
+</body>
+
+</html>
+<script>
+/////https://datatables.net/download/
+/////https://toni-heittola.github.io/js-datatable/
+/////https://www.youtube.com/watch?v=ktW5P2SigiM
+//////https://mdbootstrap.com/content/bootstrap-table-styles/
+////////https://www.webslesson.info/2017/01/php-pdo-ajax-crud-with-data-tables-and-bootstrap-modals.html
+///////https://www.youtube.com/watch?v=E26oj-XD6TU
+//////https://www.youtube.com/watch?v=F-0P12xOVGMmmmm
+</script>
